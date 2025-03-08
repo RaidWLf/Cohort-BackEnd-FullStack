@@ -4,6 +4,8 @@ import cors from "cors";
 import dbConnect from "./utils/db.js";
 
 dotenv.config();
+// importing all routes
+import userRoutes from "./routes/user.routes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,6 +29,9 @@ app.get("/", (req, res) => {
 app.get("/ambuj", (req, res) => {
 	res.send("Hello Ambuj");
 });
+
+//user routes
+app.use("/api/v1/users/", userRoutes);
 
 dbConnect();
 
